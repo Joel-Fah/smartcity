@@ -1,23 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-    <title>Login</title>
+    <title>Smart City - Authentication</title>
+
+    <!-- Tailwind css -->
+    <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+
+    <style th:inline="text">
+        #hero {
+            background: url([[@{/images/smart-city-bg.jpg}]]) no-repeat fixed;
+            background-size: cover;
+            background-position: center 30%;
+            background-color: red;
+        }
+    </style>
 </head>
-<body>
-    <h2>Login</h2>
-    <form th:action="@{/login}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required/><br/>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required/><br/>
+<body class="font-sans">
+    <section class="h-screen w-screen grid grid-cols-12">
+        <div class="col-span-4 flex flex-col gap-8 items-start justify-center h-screen p-8 bg-slate-900">
+            <div class="">
+                <img th:src="@{/images/logo-smc-white.svg}" class="mb-4" alt="logo">
+                <h2 class="text-5xl text-slate-100 font-title font-bold">Hey there! Nice to see over again...</h2>
+            </div>
 
-    <button type="submit">Login</button>
+            <form th:action="@{/login}" method="post" class="w-full flex-1 flex flex-col gap-4">
+                <div class="relative w-full min-w-[200px]">
+                    <label for="username" class="block mb-2 ps-3 text-sm text-slate-600">
+                        Username
+                    </label>
+                    <input
+                        class="w-full bg-slate-50/10 placeholder:text-slate-400 text-white text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                        type="text" name="username" id="username" placeholder="smart@city" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                        class="absolute w-6 h-6 top-9 right-2.5 text-slate-500">
+                        <path
+                            d="M15.6 8.40033V12.9003C15.6 14.3915 16.8088 15.6003 18.3 15.6003C19.7912 15.6003 21 14.3915 21 12.9003V12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C14.0265 21 15.8965 20.3302 17.4009 19.2M15.6 12.0003C15.6 13.9886 13.9882 15.6003 12 15.6003C10.0118 15.6003 8.4 13.9886 8.4 12.0003C8.4 10.0121 10.0118 8.40033 12 8.40033C13.9882 8.40033 15.6 10.0121 15.6 12.0003Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </div>
 
-    <div th:if="${param.error}">
-        <p style="color: red;">Invalid username or password.</p>
-    </div>
-</form>
+                <div class="relative w-full min-w-[200px]">
+                    <label for="password" class="block mb-2 ps-3 text-sm text-slate-600">
+                        Password
+                    </label>
+                    <input
+                        class="w-full bg-slate-50/10 placeholder:text-slate-400 text-white text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                        type="password" name="password" id="password" placeholder="*************" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                        class="absolute w-6 h-6 top-9 right-2.5 text-slate-500">
+                        <path
+                            d="M4.07407 7.92857C5.23724 6.24613 5.81883 5.40491 6.65298 4.95245C7.48714 4.5 8.45645 4.5 10.3951 4.5H15.0864C17.8607 4.5 19.2478 4.5 20.2442 5.22227C20.6756 5.53495 21.046 5.93674 21.3342 6.4047C22 7.48566 22 8.99044 22 12C22 15.0096 22 16.5143 21.3342 17.5953C21.046 18.0633 20.6756 18.465 20.2442 18.7777C19.2478 19.5 17.8607 19.5 15.0864 19.5H10.3951C8.45645 19.5 7.48714 19.5 6.65298 19.0475C5.81883 18.5951 5.23724 17.7539 4.07407 16.0714L3.92593 15.8571C2.64198 14 2 13.0714 2 12C2 10.9286 2.64198 10 3.92593 8.14286L4.07407 7.92857Z"
+                            stroke="currentColor" stroke-width="1.5" />
+                        <path d="M8.99981 12H9.00879" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12.9998 12H13.0088" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M16.9998 12H17.0088" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <button type="submit"
+                    class="rounded-xl bg-gradient-to-tr from-blue-800 to-blue-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                    Login
+                </button>
+
+                <div th:if="${param.error}" class="text-sm p-2 bg-red-100/10 rounded-lg">
+                    <p style="color: red;">Invalid username or password.</p>
+                </div>
+            </form>
+
+            <small class="text-slate-500">
+                &copy; 2024 Smart City. All rights reserved.
+            </small>
+        </div>
+
+        <!-- Image bg -->
+        <div id="hero" class="col-span-8 h-screen"></div>
+    </section>
+
 
 </body>
+
 </html>
