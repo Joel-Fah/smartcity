@@ -9,7 +9,12 @@ module.exports = {
         './src/main/resources/static/js/**/*.js',
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                'sans': ['Urbanist', 'sans-serif'],
+                'title': ['Nohemi', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 };
