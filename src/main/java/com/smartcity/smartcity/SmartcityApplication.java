@@ -18,5 +18,4 @@ public class SmartcityApplication {
 
 		SpringApplication.run(SmartcityApplication.class, args);
 	}
-
 }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartcity - Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+</head>
+
+<body class="font-sans">
+    <!-- Header -->
+    <nav
+        class="block w-full px-8 py-2 mx-auto sticky top-0 left-0 right-0 bg-opacity-80 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
+        <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center">Home</a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center">Facilities</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
+                <img th:src="@{/images/logo-text-smc-primary.svg}" class="w-2/3 m-auto" alt="logo">
+            </a>
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <path
+                                    d="M15 12C15 10.8954 15.8954 10 17 10C19.2091 10 21 11.7909 21 14C21 16.2091 19.2091 18 17 18C15.8954 18 15 17.1046 15 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M9 12C9 10.8954 8.10457 10 7 10C4.79086 10 3 11.7909 3 14C3 16.2091 4.79086 18 7 18C8.10457 18 9 17.1046 9 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M3 14V11C3 6.02944 7.02944 2 12 2C16.9706 2 21 6.02944 21 11V15.8462C21 17.8545 21 18.8586 20.6476 19.6417C20.2465 20.5329 19.5329 21.2465 18.6417 21.6476C17.8586 22 16.8545 22 14.8462 22H12"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 9.39815 13.8837 9.76913 13.6831 10.0808C13.0854 11.0097 12 11.8954 12 13V13.5"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M11.992 17H12.001" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button
+                class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+                type="button">
+                <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Body -->
+    <main>
+        <section id="hero" class="p-2 max-w-screen-xl m-auto">
+            <div id="trending"
+                class="relative flex items-center justify-center w-full h-80 rounded-md bg-slate-300 overflow-hidden">
+                <img th:src="@{/images/smart-city-bg.jpg}" class="absolute z-0 brightness-50" alt="">
+
+                <div class="z-10 text-white text-center leading-tight">
+                    <small class="text-sm text-slate-200">Bring out the best out of</small>
+                    <h1 class="text-8xl font-bold font-title"> Smart<span class="text-blue-600">city</span>.</h1>
+                    <div class="flex gap-2.5 items-center">
+                        <p>Hotels</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>ATMs</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>Restuarants</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>Attractions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities" class="p-2 max-w-screen-xl m-auto mt-10">
+            <div class="">
+                <h3 class="text-2xl font-title font-medium">Facilities</h3>
+            </div>
+
+
+            <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="grid gap-4">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="grid gap-4">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="grid gap-4">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
+                    </div>
+                </div>
+                <div class="grid gap-4">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="flex flex-row flex-wrap items-center justify-center w-full max-w-screen-xl m-auto py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+        <p class="block text-slate-800 font-semibold text-sm">
+            <img th:src="@{/images/logo-text-smc-dark.svg}" class="" alt="logo">
+        </p>
+        <p class="text-sm text-center text-slate-500">
+            Copyright © 2024&nbsp; 
+            <a href="" target="_blank" rel="noreferrer">Smartcity</a>.
+          </p>
+      </footer> 
+</body>
+
+</html>
