@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartcity Facilities</title>
+    <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+</head>
+
+<body class="font-sans">
+    <!-- Header -->
+    <nav
+        class="block w-full px-8 py-2 mx-auto sticky top-0 left-0 right-0 bg-opacity-80 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
+        <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 font-semibold text-blue-600">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                        <a href="#" class="flex items-center">Home</a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center">Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
+                <img th:src="@{/images/logo-text-smc-primary.svg}" class="w-2/3 m-auto" alt="logo">
+            </a>
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <path
+                                    d="M15 12C15 10.8954 15.8954 10 17 10C19.2091 10 21 11.7909 21 14C21 16.2091 19.2091 18 17 18C15.8954 18 15 17.1046 15 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M9 12C9 10.8954 8.10457 10 7 10C4.79086 10 3 11.7909 3 14C3 16.2091 4.79086 18 7 18C8.10457 18 9 17.1046 9 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M3 14V11C3 6.02944 7.02944 2 12 2C16.9706 2 21 6.02944 21 11V15.8462C21 17.8545 21 18.8586 20.6476 19.6417C20.2465 20.5329 19.5329 21.2465 18.6417 21.6476C17.8586 22 16.8545 22 14.8462 22H12"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 9.39815 13.8837 9.76913 13.6831 10.0808C13.0854 11.0097 12 11.8954 12 13V13.5"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M11.992 17H12.001" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button
+                class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+                type="button">
+                <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Body -->
+    <main>
+        <section id="hero" class="p-2 max-w-screen-xl m-auto">
+            <div id="trending"
+                class="relative flex items-center justify-center w-full h-80 rounded-md bg-slate-300 overflow-hidden">
+                <img th:src="@{/images/smart-city-bg.jpg}" class="absolute z-0 brightness-50" alt="">
+
+                <div class="z-10 text-white text-center leading-tight">
+                    <small class="text-sm text-slate-200">Bring out the best out of</small>
+                    <h1 class="text-8xl font-bold font-title"> Smart<span class="text-blue-600">city</span>.</h1>
+                    <div class="flex gap-2.5 items-center">
+                        <p>Hotels</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>ATMs</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>Restuarants</p>
+                        <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
+                        <p>Attractions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section id="categories" class="p-2 max-w-screen-xl m-auto mt-10">
+            <div class="mb-4">
+                <h3 class="text-2xl font-title font-medium">Categories</h3>
+            </div>
+
+            <div class="flex gap-2 overflow-x-auto">
+                <div th:each="category:${categories}" class="">
+                    <div class="relative h-44 rounded-xl overflow-hidden text-white">
+                        <a href="">
+                            <img class="transition-transform w-full h-full object-cover duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
+                                th:src="${category.imageUrl}" alt="investment-seed-round" />
+                            <div
+                                class="flex flex-col items-start justify-end absolute top-0 right-0 left-0 bottom-0 rounded-xl font-bold text-4xl text-slate-50 p-4 bg-gradient-to-b from-slate-300/10 to-slate-950">
+                                <span th:text="${category.name}" class=""></span>
+                                <span th:text="${category.description}" class="text-sm text-slate-400"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="facilities" class="p-2 max-w-screen-xl m-auto mt-10">
+            <div class="mb-4">
+                <h3 class="text-2xl font-title font-medium">Featured Facilities</h3>
+            </div>
+
+            <div class="columns-1 sm:columns-2 md:columns-3 gap-4">
+                <div th:each="facility:${facilities}" class="mb-4 break-inside-avoid">
+                    <div class="col-span-full h-auto">
+                        <div
+                            class="group relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg hover:shadow-lg transition-shadow duration-300">
+                            <div class="relative h-64 overflow-hidden text-white rounded-t-md">
+                                <img class="transition-transform w-full h-full object-cover duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
+                                    th:src="${facility.imageUrl}" alt="investment-seed-round" />
+                                <div
+                                    class="flex items-center justify-center gap-1 absolute top-2 right-2 text-xs text-slate-950  px-2 py-1 rounded-full bg-yellow-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24"
+                                        width="24" height="24" fill="none">
+                                        <path
+                                            d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span th:text="${facility.rating}" class=""></span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 th:text="${facility.name}" class="mb-0 text-slate-800 text-xl font-semibold">
+                                    Facility name
+                                </h3>
+                                <span th:text="${facility.tags}" class="text-xs text-slate-700"></span>
+
+
+                                <p th:text="${facility.description}"
+                                    class="text-slate-600 leading-normal font-light mt-4">
+                                    Facility Description
+                                </p>
+                            </div>
+                            <div class="px-4 pb-4 pt-0 mt-2">
+                                <a href="#"
+                                    class="text-blue-600 font-semibold text-sm hover:underline flex items-center">
+                                    Read more
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 24 24"
+                                        width="24" height="24" fill="none">
+                                        <path d="M20.0001 11.9998L4.00012 11.9998" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="flex flex-row flex-wrap items-center justify-center w-full max-w-screen-xl m-auto py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+        <p class="block text-slate-800 font-semibold text-sm">
+            <img th:src="@{/images/logo-text-smc-dark.svg}" class="" alt="logo">
+        </p>
+        <p class="text-sm text-center text-slate-500">
+            Copyright © 2024&nbsp;
+            <a href="" target="_blank" rel="noreferrer">Smartcity</a>.
+        </p>
+    </footer>
+</body>
+
+</html>

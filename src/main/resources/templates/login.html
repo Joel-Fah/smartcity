@@ -23,8 +23,8 @@
     <section class="h-screen w-screen grid grid-cols-12">
         <div class="col-span-4 flex flex-col gap-8 items-start justify-center h-screen p-8 bg-slate-900">
             <div class="">
-                <img th:src="@{/images/logo-smc-white.svg}" class="mb-4" alt="logo">
-                <h2 class="text-5xl text-slate-100 font-title font-bold">Hey there! Nice to see over again...</h2>
+                <img th:src="@{/images/logo-text-smc-primary.svg}" class="mb-4" alt="logo">
+                <h2 class="text-5xl text-slate-100 font-title font-bold">Hey there! <br/> Nice to see you over again...</h2>
             </div>
 
             <form th:action="@{/login}" method="post" class="w-full flex-1 flex flex-col gap-4">
@@ -80,7 +80,24 @@
         </div>
 
         <!-- Image bg -->
-        <div id="hero" class="col-span-8 h-screen"></div>
+        <div id="hero" class="col-span-8 h-screen relative">
+            <div class="absolute bottom-2 right-2">
+                <blockquote class="max-w-80 leading-tight flex flex-col gap-2 items-start text-white">
+                    <div class="flex items-center justify-center gap-1 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" class="w-5 h-5">
+                            <path d="M5.07579 17C4.08939 4.54502 12.9123 1.0121 19.9734 2.22417C20.2585 6.35185 18.2389 7.89748 14.3926 8.61125C15.1353 9.38731 16.4477 10.3639 16.3061 11.5847C16.2054 12.4534 15.6154 12.8797 14.4355 13.7322C11.8497 15.6004 8.85421 16.7785 5.07579 17Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4 22C4 15.5 7.84848 12.1818 10.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Did you know?</span>
+                    </div>
+
+                    <span class="text-slate text-xs">
+                        Smart City is a digital platform that connects citizens with the local government to provide
+                        services and information to improve the quality of life in the city.
+                    </span>
+                </blockquote>
+            </div>
+        </div>
     </section>
 
 
