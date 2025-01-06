@@ -21,6 +21,7 @@ public class Facility {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @NotNull
     private Category category;
 
     private String tags; // Comma-separated values
