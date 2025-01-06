@@ -19,12 +19,12 @@
         <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
             <div class="hidden lg:block">
                 <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a th:href= "@{/}" class="flex items-center">Home</a>
+                    </li>
                     <li class="flex items-center p-1 text-sm gap-x-2 font-semibold text-blue-600">
                         <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
-                        <a href="#" class="flex items-center">Home</a>
-                    </li>
-                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
-                        <a href="#" class="flex items-center">Admin</a>
+                        <a href="#" class="flex items-center">Facilities</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +80,7 @@
 
     <!-- Body -->
     <main>
-        <section id="hero" class="p-2 max-w-screen-xl m-auto">
+        <section id="hero" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto">
             <div id="trending"
                 class="relative flex items-center justify-center w-full h-80 rounded-md bg-slate-300 overflow-hidden">
                 <img th:src="@{/images/smart-city-bg.jpg}" class="absolute z-0 brightness-50" alt="">
@@ -102,7 +102,7 @@
         </section>
 
         <!-- Categories -->
-        <section id="categories" class="p-2 max-w-screen-xl m-auto mt-10">
+        <section id="categories" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto mt-10">
             <div class="mb-4">
                 <h3 class="text-2xl font-title font-medium">Categories</h3>
             </div>
@@ -125,12 +125,21 @@
 
         </section>
 
-        <section id="facilities" class="p-2 max-w-screen-xl m-auto mt-10">
-            <div class="mb-4">
+        <section id="facilities" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto mt-10">
+            <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-2xl font-title font-medium">Featured Facilities</h3>
+                <a th:href= "@{/new}" class="flex items-center gap-1 text-blue-600 text-sm border-b px-2 pb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                        <path d="M2.9668 10.002V15.002C2.9668 17.8304 2.9668 19.2446 3.84548 20.1233C4.72416 21.002 6.13837 21.002 8.9668 21.002H12.4668M20.9668 10.002V11.502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M14.9668 18.502H21.9668M18.4668 22.002V15.002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M6.9668 17.002H10.9668" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M10.1038 7.92324C9.82182 8.94288 8.79628 10.7018 6.84777 10.9567C5.12733 11.1817 3.82246 10.4299 3.48916 10.1155C3.12168 9.86056 2.28416 9.04485 2.07906 8.53503C1.87395 8.02521 2.11324 6.9206 2.28416 6.47026L2.96743 4.48946C3.13423 3.99194 3.5247 2.81521 3.92501 2.4172C4.32533 2.01918 5.13581 2.00187 5.4694 2.00187H12.4749C14.2781 2.02737 18.2209 1.98577 19.0003 2.00187C19.7797 2.01797 20.2481 2.67211 20.3848 2.95251C21.5477 5.77276 22 7.38793 22 8.07619C21.8482 8.8104 21.22 10.1948 19.0003 10.8037C16.6933 11.4366 15.3854 10.2057 14.9751 9.7331M9.15522 9.7331C9.47997 10.1325 10.4987 10.9363 11.9754 10.9567C13.4522 10.9771 14.7273 9.94553 15.1802 9.42721C15.3084 9.27426 15.5853 8.82053 15.8725 7.92324" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Add a facility
+                </a>
             </div>
 
-            <div class="columns-1 sm:columns-2 md:columns-3 gap-4">
+            <div class="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-4">
                 <div th:each="facility:${facilities}" class="mb-4 break-inside-avoid">
                     <div class="col-span-full h-auto">
                         <div
@@ -158,7 +167,7 @@
 
 
                                 <p th:text="${facility.description}"
-                                    class="text-slate-600 leading-normal font-light mt-4">
+                                    class="text-slate-600 text-sm leading-normal font-light mt-4 line-clamp-3">
                                     Facility Description
                                 </p>
                             </div>
@@ -187,7 +196,7 @@
 
     <!-- Footer -->
     <footer
-        class="flex flex-row flex-wrap items-center justify-center w-full max-w-screen-xl m-auto py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+        class="flex flex-row flex-wrap items-center justify-center w-full max-w-screen-xl m-auto mt-8 py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
         <p class="block text-slate-800 font-semibold text-sm">
             <img th:src="@{/images/logo-text-smc-dark.svg}" class="" alt="logo">
         </p>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/facilities")
 public class FacilityController {
 
     private final FacilityService facilityService;
@@ -37,19 +37,20 @@ public class FacilityController {
     public String getFacilityById(@PathVariable Long id, Model model) {
         Facility facility = facilityService.getFacilityById(id);
         model.addAttribute("facility", facility);
-        return "facility-details";
+        return "facilities/facility-details";
     }
 
     @GetMapping("/new")
     public String createFacilityForm(Model model) {
         model.addAttribute("facility", new Facility());
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "facilities/facility-form";
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public String saveFacility(@ModelAttribute Facility facility) {
         facilityService.createFacility(facility);
-        return "redirect:/facilities";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/edit")
