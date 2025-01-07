@@ -27,6 +27,8 @@ public class CategoryServiceImpl implements CategoryService {
         existingCategory.setName(category.getName());
         existingCategory.setDescription(category.getDescription());
         existingCategory.setImageUrl(category.getImageUrl());
+        existingCategory.setCreatedAt(category.getCreatedAt());
+        existingCategory.setUpdatedAt(category.getUpdatedAt());
         return categoryRepository.save(existingCategory);
     }
 

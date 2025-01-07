@@ -80,7 +80,7 @@
 
     <!-- Body -->
     <main>
-        <section id="hero" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto">
+        <section id="hero" class="p-2 max-w-screen-xl m-auto">
             <div id="trending"
                 class="relative flex items-center justify-center w-full h-80 rounded-md bg-slate-300 overflow-hidden">
                 <img th:src="@{/images/smart-city-bg.jpg}" class="absolute z-0 brightness-50" alt="">
@@ -102,7 +102,7 @@
         </section>
 
         <!-- Categories -->
-        <section id="categories" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto mt-10">
+        <section id="categories" class="p-2 max-w-screen-xl m-auto mt-10">
             <div class="mb-4">
                 <h3 class="text-2xl font-title font-medium">Categories</h3>
             </div>
@@ -125,10 +125,10 @@
 
         </section>
 
-        <section id="facilities" class="p-2 max-w-screen-xl xl:max-w-screen-2xl m-auto mt-10">
+        <section id="facilities" class="p-2 max-w-screen-xl m-auto mt-10">
             <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-2xl font-title font-medium">Featured Facilities</h3>
-                <a th:href= "@{/new}" class="flex items-center gap-1 text-blue-600 text-sm border-b px-2 pb-1">
+                <a th:href= "@{/facilities/new}" class="flex items-center gap-1 text-blue-600 text-sm border-b px-2 pb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" width="24" height="24" fill="none">
                         <path d="M2.9668 10.002V15.002C2.9668 17.8304 2.9668 19.2446 3.84548 20.1233C4.72416 21.002 6.13837 21.002 8.9668 21.002H12.4668M20.9668 10.002V11.502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                         <path d="M14.9668 18.502H21.9668M18.4668 22.002V15.002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -139,9 +139,9 @@
                 </a>
             </div>
 
-            <div class="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-4">
+            <div class="columns-1 sm:columns-2 md:columns-3 gap-4">
                 <div th:each="facility:${facilities}" class="mb-4 break-inside-avoid">
-                    <div class="col-span-full h-auto">
+                    <div th:if= "${facility.isActive}" class="col-span-full h-auto">
                         <div
                             class="group relative flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg hover:shadow-lg transition-shadow duration-300">
                             <div class="relative h-64 overflow-hidden text-white rounded-t-md">
@@ -163,7 +163,11 @@
                                 <h3 th:text="${facility.name}" class="mb-0 text-slate-800 text-xl font-semibold">
                                     Facility name
                                 </h3>
-                                <span th:text="${facility.tags}" class="text-xs text-slate-700"></span>
+                                <ul class="flex gap-2 mb-2">
+                                    <li th:each="tag : ${#strings.arraySplit(facility.tags, ',')}" class="inline">
+                                        <span th:text="${tag}" class="px-2.5 py-0.5 rounded-md text-xs text-slate-700 bg-slate-200"></span>
+                                    </li>
+                                </ul>
 
 
                                 <p th:text="${facility.description}"
@@ -172,7 +176,7 @@
                                 </p>
                             </div>
                             <div class="px-4 pb-4 pt-0 mt-2">
-                                <a href="#"
+                                <a th:href="@{/facilities/} + ${facility.id}"
                                     class="text-blue-600 font-semibold text-sm hover:underline flex items-center">
                                     Read more
                                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 24 24"

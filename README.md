@@ -1,10 +1,13 @@
-# Smart City Web Application
+![Smartcity Logo](./src/main/resources/static/images/logo-text-smc-primary.svg)
 
+# **Smartcity Web Application**
 The Smart City project is a web-based software application designed to provide essential information about a city to
 newcomers. The application includes modules for tourism, student assistance, job opportunities, and business
 information, making it an all-in-one guide for city exploration and resources.
 
-## Features
+![Smartcity Home page](./src/main/resources/static/images/home.png)
+
+## **Features**
 
 - **Administration Module**: Central control for uploading and managing city data.
 - **Tourism Module**: Information on hotels, restaurants, landmarks, and more.
@@ -14,7 +17,7 @@ information, making it an all-in-one guide for city exploration and resources.
 
 ---
 
-## Prerequisites
+## **Prerequisites**
 
 Ensure you have the following installed on your system:
 
@@ -26,7 +29,7 @@ Ensure you have the following installed on your system:
 
 ---
 
-## Installation
+## **Installation**
 
 1. Create a fork of the repository by clicking the "Fork" button in the top right corner of
    this [page](https://github.com/Joel-Fah/smartcity).
@@ -64,7 +67,7 @@ Ensure you have the following installed on your system:
 
 ---
 
-## Usage
+## **Usage**
 
 - **Access the Application**:
   Open your browser and navigate to [http://localhost:8080](http://localhost:8080).
@@ -85,7 +88,7 @@ Ensure you have the following installed on your system:
 
 ---
 
-## Development
+## **Development**
 
 1. **Run Tests**:
    ```bash
@@ -103,7 +106,7 @@ Ensure you have the following installed on your system:
 
 ---
 
-## Contributing
+## **Contributing**
 
 1. **Fork the Repository**:
     - Navigate to the [GitHub repository](https://github.com/Joel-Fah/smartcity) and click the "Fork" button.
@@ -128,13 +131,13 @@ Ensure you have the following installed on your system:
 
 ---
 
-## License
+## **License**
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-## Troubleshooting
+## **Troubleshooting**
 
 - **Database Connection Issues**:
     - Ensure the PostgreSQL service is running.

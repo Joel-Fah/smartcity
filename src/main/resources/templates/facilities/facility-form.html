@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Smartcity Facilities</title>
+    <title>Smartcity - Add a new facility</title>
     <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
 
     <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
@@ -89,7 +89,7 @@
                     </p>
                 </div>
 
-                <form th:action="@{/new}" th:object="${facility}" method="post" class="flex flex-col gap-2.5">
+                <form th:action="@{/facilities/new}" th:object="${facility}" method="post" class="flex flex-col gap-2.5">
                     <div class="relative w-full min-w-[200px]">
                         <label for="name" class="block mb-1 ps-3 text-sm text-slate-600">
                             Name <span class="text-red-500 font-bold">*</span>
