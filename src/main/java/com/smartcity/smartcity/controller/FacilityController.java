@@ -44,7 +44,7 @@ public class FacilityController {
     public String createFacilityForm(Model model) {
         model.addAttribute("facility", new Facility());
         model.addAttribute("categories", categoryService.getAllCategories());
-        return "facilities/facility-form";
+        return "facilities/facility-add";
     }
 
     @PostMapping("/new")
@@ -57,13 +57,14 @@ public class FacilityController {
     public String editFacilityForm(@PathVariable Long id, Model model) {
         Facility facility = facilityService.getFacilityById(id);
         model.addAttribute("facility", facility);
-        return "facility-form";
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "facilities/facility-update";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/edit")
     public String updateFacility(@PathVariable Long id, @ModelAttribute Facility facility) {
         facilityService.updateFacility(id, facility);
-        return "redirect:/facilities";
+        return "redirect:/facilities/" + id;
     }
 
     @GetMapping("/{id}/delete")
