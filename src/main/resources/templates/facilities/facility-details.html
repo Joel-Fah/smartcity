@@ -111,7 +111,7 @@
             </div>
 
             <div class="flex items-center gap-2 mt-4">
-                <a href="" class="flex gap-2 items-center justify-center bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 px-4 py-2 rounded-xl transition-colors duration-300">
+                <a th:href= "@{/facilities/} + ${facility.id} + '/edit'" class="flex gap-2 items-center justify-center bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 px-4 py-2 rounded-xl transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
                         <path d="M3 17H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M3 21H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -156,7 +156,11 @@
 
                     <div th:if= "${not #strings.isEmpty(facility.openingHours)}" class="flex flex-col">
                         <h3 class="text-blue-600">Opening hours</h3>
-                        <p th:text="${facility.openingHours}" class="text-lg text-slate-800">N/A</p>
+                        <ul class="list-disc list-inside mb-4 ms-2">
+                            <li th:each="hour : ${#strings.arraySplit(facility.openingHours, ',')}">
+                                <span th:text="${hour}" class=""></span>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="flex flex-col gap-0.5">

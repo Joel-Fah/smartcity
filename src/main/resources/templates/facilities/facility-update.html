@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:text="'Smartcity - Updating ' + ${facility.name}"></title>
+    <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+</head>
+
+<body class="font-sans">
+    <!-- Header -->
+    <nav
+        class="block w-full px-8 py-2 mx-auto sticky top-0 left-0 right-0 bg-opacity-80 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
+        <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a th:href= "@{/}" class="flex items-center">Home</a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 font-semibold text-blue-600">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                        <a th:href="@{/facilities}" class="flex items-center">Facilities</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
+                <img th:src="@{/images/logo-text-smc-primary.svg}" class="w-2/3 m-auto" alt="logo">
+            </a>
+            <div class="hidden lg:block">
+                <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <path
+                                    d="M15 12C15 10.8954 15.8954 10 17 10C19.2091 10 21 11.7909 21 14C21 16.2091 19.2091 18 17 18C15.8954 18 15 17.1046 15 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M9 12C9 10.8954 8.10457 10 7 10C4.79086 10 3 11.7909 3 14C3 16.2091 4.79086 18 7 18C8.10457 18 9 17.1046 9 16V12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M3 14V11C3 6.02944 7.02944 2 12 2C16.9706 2 21 6.02944 21 11V15.8462C21 17.8545 21 18.8586 20.6476 19.6417C20.2465 20.5329 19.5329 21.2465 18.6417 21.6476C17.8586 22 16.8545 22 14.8462 22H12"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+                        <a href="#" class="flex items-center w-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 9.39815 13.8837 9.76913 13.6831 10.0808C13.0854 11.0097 12 11.8954 12 13V13.5"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M11.992 17H12.001" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button
+                class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+                type="button">
+                <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Body -->
+    <main>
+        <div class="grid grid-cols-12 gap-2 max-w-screen-xl m-auto">
+            <div class="col-span-6 flex flex-col gap-4 my-4">
+                <div class="space-y-2">
+                    <span class="block text-2xl">You're updating</span>
+                    <h2 th:text="${facility.name}" class="text-3xl font-bold font-title"></h2>
+                    <p class="text-sm text-slate-400">
+                        Fill in the form below to add a new facility. Fields with <span
+                            class="text-red-500 font-bold text-base">*</span> are required.
+                            <small class="block">Last updated on <span th:text="${#dates.format(facility.updatedAt, 'E. dd MMM. yyyy')}" class="text-yellow-500"></span></small>
+                    </p>
+                </div>
+
+                <form th:action="@{/facilities/{id}/edit(id=${facility.id})}" th:object="${facility}" method="post" class="flex flex-col gap-2.5">
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="name" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Name <span class="text-red-500 font-bold">*</span>
+                        </label>
+                        <input
+                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            type="text" name="name" id="name" placeholder="The ICT University" required
+                            th:field="*{name}" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                            <path
+                                d="M15.6 8.40033V12.9003C15.6 14.3915 16.8088 15.6003 18.3 15.6003C19.7912 15.6003 21 14.3915 21 12.9003V12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C14.0265 21 15.8965 20.3302 17.4009 19.2M15.6 12.0003C15.6 13.9886 13.9882 15.6003 12 15.6003C10.0118 15.6003 8.4 13.9886 8.4 12.0003C8.4 10.0121 10.0118 8.40033 12 8.40033C13.9882 8.40033 15.6 10.0121 15.6 12.0003Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="address" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Address <span class="text-red-500 font-bold">*</span>
+                        </label>
+                        <input
+                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            type="text" name="address" id="address" placeholder="Zoatupsi, Messassi" required
+                            th:field="*{address}" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                            <path
+                                d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z"
+                                stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M12 2C16.8706 2 21 6.03298 21 10.9258C21 15.8965 16.8033 19.3847 12.927 21.7567C12.6445 21.9162 12.325 22 12 22C11.675 22 11.3555 21.9162 11.073 21.7567C7.2039 19.3616 3 15.9137 3 10.9258C3 6.03298 7.12944 2 12 2Z"
+                                stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="imageUrl" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Image URL <span class="text-red-500 font-bold">*</span>
+                        </label>
+                        <input
+                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            type="url" name="imageUrl" id="imageUrl" placeholder="https://..." required
+                            th:field="*{imageUrl}" />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
+                                <circle cx="16.5" cy="7.5" r="1.5" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M16 22C15.3805 19.7749 13.9345 17.7821 11.8765 16.3342C9.65761 14.7729 6.87163 13.9466 4.01569 14.0027C3.67658 14.0019 3.33776 14.0127 3 14.0351" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                <path d="M13 18C14.7015 16.6733 16.5345 15.9928 18.3862 16.0001C19.4362 15.999 20.4812 16.2216 21.5 16.6617" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                            </svg>
+                    </div>
+
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="tags" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Tags
+                        </label>
+                        <input
+                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            type="text" name="tags" id="tags" placeholder="school, education, university"
+                            th:field="*{tags}" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                            <path
+                                d="M18.058 8.53645L17.058 7.92286C16.0553 7.30762 15.554 7 15 7C14.446 7 13.9447 7.30762 12.942 7.92286L11.942 8.53645C10.9935 9.11848 10.5192 9.40949 10.2596 9.87838C10 10.3473 10 10.9129 10 12.0442V17.9094C10 19.8377 10 20.8019 10.5858 21.4009C11.1716 22 12.1144 22 14 22H16C17.8856 22 18.8284 22 19.4142 21.4009C20 20.8019 20 19.8377 20 17.9094V12.0442C20 10.9129 20 10.3473 19.7404 9.87838C19.4808 9.40949 19.0065 9.11848 18.058 8.53645Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M14 7.10809C13.3612 6.4951 12.9791 6.17285 12.4974 6.05178C11.9374 5.91102 11.3491 6.06888 10.1725 6.3846L8.99908 6.69947C7.88602 6.99814 7.32949 7.14748 6.94287 7.5163C6.55624 7.88513 6.40642 8.40961 6.10679 9.45857L4.55327 14.8971C4.0425 16.6852 3.78712 17.5792 4.22063 18.2836C4.59336 18.8892 6.0835 19.6339 7.5 20"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M14.4947 10C15.336 9.44058 16.0828 8.54291 16.5468 7.42653C17.5048 5.12162 16.8944 2.75724 15.1836 2.14554C13.4727 1.53383 11.3091 2.90644 10.3512 5.21135C10.191 5.59667 10.0747 5.98366 10 6.36383"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                        <small class="ps-3 mt-1 text-xs block text-slate-400">Add 2 to 3 tags, comma-separated</small>
+                    </div>
+
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="openingHours" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Opening hours
+                        </label>
+                        <input
+                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            type="text" name="tags" id="tags" placeholder="(Mon) 8:00 AM - 5:00 PM, (Tue) 8:00 AM - 5:00 PM, ..."
+                            th:field="*{openingHours}" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                        class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                            <path d="M18 2V4M6 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.9955 13H12.0045M11.9955 17H12.0045M15.991 13H16M8 13H8.00897M8 17H8.00897" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3.5 8H20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.5 12.2432C2.5 7.88594 2.5 5.70728 3.75212 4.35364C5.00424 3 7.01949 3 11.05 3H12.95C16.9805 3 18.9958 3 20.2479 4.35364C21.5 5.70728 21.5 7.88594 21.5 12.2432V12.7568C21.5 17.1141 21.5 19.2927 20.2479 20.6464C18.9958 22 16.9805 22 12.95 22H11.05C7.01949 22 5.00424 22 3.75212 20.6464C2.5 19.2927 2.5 17.1141 2.5 12.7568V12.2432Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3 8H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <small class="ps-3 mt-1 text-xs block text-slate-400">
+                            Add the opening hours for each day of the week  
+                        </small>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <div class="relative w-1/3 min-w-[200px]">
+                            <label for="rating" class="block mb-1 ps-3 text-sm text-slate-600">
+                                Rating <span class="text-red-500 font-bold">*</span>
+                            </label>
+                            <input
+                                class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                                type="text" name="rating" id="rating" placeholder="3.75" required th:field="*{rating}" />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                <path
+                                    d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                                    stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M12.8638 7.72209L13.7437 9.49644C13.8637 9.74344 14.1837 9.98035 14.4536 10.0257L16.0485 10.2929C17.0684 10.4643 17.3083 11.2103 16.5734 11.9462L15.3335 13.1964C15.1236 13.4081 15.0086 13.8164 15.0736 14.1087L15.4285 15.6562C15.7085 16.8812 15.0636 17.355 13.9887 16.7148L12.4939 15.8226C12.2239 15.6613 11.7789 15.6613 11.504 15.8226L10.0091 16.7148C8.93925 17.355 8.28932 16.8761 8.56929 15.6562L8.92425 14.1087C8.98925 13.8164 8.87426 13.4081 8.66428 13.1964L7.42442 11.9462C6.6945 11.2103 6.92947 10.4643 7.94936 10.2929L9.54419 10.0257C9.80916 9.98035 10.1291 9.74344 10.2491 9.49644L11.129 7.72209C11.609 6.7593 12.3889 6.7593 12.8638 7.72209Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <small class="ps-3 mt-1 text-xs block text-slate-400">A value out of 5</small>
+                        </div>
+                        <div class="relative w-2/3 min-w-[200px]">
+                            <label for="category" class="block mb-1 ps-3 text-sm text-slate-600">
+                                Category <span class="text-red-500 font-bold">*</span>
+                            </label>
+                            <select id="category" th:field="*{category}" name="categoryId"
+                                class="appearance-none cursor-pointer w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow">
+                                <option th:each="category : ${categories}" th:value="${category.id}"
+                                    th:text="${category.name}"
+                                     th:selected="${category.id} == ${facility.category.id}"></option>
+                            </select>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                <path
+                                    d="M14.6171 4.76655C15.6275 3.16588 16.1327 2.36554 16.7947 2.12444C17.2503 1.95852 17.7497 1.95852 18.2053 2.12444C18.8673 2.36554 19.3725 3.16588 20.3829 4.76655C21.5202 6.56824 22.0889 7.46908 21.9887 8.21239C21.92 8.72222 21.6634 9.18799 21.2693 9.51835C20.6947 10 19.6298 10 17.5 10C15.3702 10 14.3053 10 13.7307 9.51835C13.3366 9.18799 13.08 8.72222 13.0113 8.21239C12.9111 7.46908 13.4798 6.56824 14.6171 4.76655Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                <path
+                                    d="M2 6C2 4.33345 2 3.50018 2.42441 2.91603C2.56147 2.72738 2.72738 2.56147 2.91603 2.42441C3.50018 2 4.33345 2 6 2C7.66655 2 8.49982 2 9.08397 2.42441C9.27262 2.56147 9.43853 2.72738 9.57559 2.91603C10 3.50018 10 4.33345 10 6C10 7.66655 10 8.49982 9.57559 9.08397C9.43853 9.27262 9.27262 9.43853 9.08397 9.57559C8.49982 10 7.66655 10 6 10C4.33345 10 3.50018 10 2.91603 9.57559C2.72738 9.43853 2.56147 9.27262 2.42441 9.08397C2 8.49982 2 7.66655 2 6Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                <circle cx="17.5" cy="18" r="4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <path d="M9.49994 14.5L2.5 21.5M2.50006 14.5L9.5 21.5" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <small class="ps-3 mt-1 text-xs block text-slate-400">Select the facility's category</small>
+                        </div>
+                    </div>
+
+                    <div class="relative w-full min-w-[200px]">
+                        <label for="description" class="block mb-1 ps-3 text-sm text-slate-600">
+                            Description <span class="text-red-500 font-bold">*</span>
+                        </label>
+                        <textarea
+                            class="w-full h-auto max-h-64 bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                            name="description" id="description"
+                            placeholder="ICT is a technology university that imparts ICTs..." rows="10" required
+                            th:field="*{description}"></textarea>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                            <path
+                                d="M5.07579 17C4.08939 4.54502 12.9123 1.0121 19.9734 2.22417C20.2585 6.35185 18.2389 7.89748 14.3926 8.61125C15.1353 9.38731 16.4477 10.3639 16.3061 11.5847C16.2054 12.4534 15.6154 12.8797 14.4355 13.7322C11.8497 15.6004 8.85421 16.7785 5.07579 17Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M4 22C4 15.5 7.84848 12.1818 10.5 10" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <small class="ps-3 mt-1 text-xs block text-slate-400">What's the facility all about...</small>
+                    </div>
+
+                    <button type="submit"
+                        class="rounded-xl bg-gradient-to-tr from-blue-800 to-blue-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                        Update facility info.
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-start-8 col-span-5 relative">
+                <img src="https://images.stockcake.com/public/3/b/f/3bfbeb3b-6d77-46b8-afe8-ea01532bfaf5_large/world-landmarks-collage-stockcake.jpg"
+                    alt="Places around the world"
+                    class="w-2/3 rounded-xl ring-2 ring-offset-2 ring-orange-500 rotate-3 hover:scale-110 hover:shadow-lg transition-all duration-300">
+
+                <img src="https://thumbs.dreamstime.com/b/european-travel-destinations-collage-many-photographs-cities-europe-90989031.jpg"
+                    alt="Places around the world"
+                    class="w-4/5 rounded-xl ring-2 ring-offset-2 ring-blue-500 -rotate-6 absolute right-10 hover:scale-110 hover:shadow-lg transition-all duration-300">
+
+                <img src="https://as1.ftcdn.net/v2/jpg/05/72/16/78/1000_F_572167835_clourygTzhfrODnmvm43zpJ2zZNoKSv3.jpg"
+                    alt="Places around the world"
+                    class="w-4/5 rounded-xl object-cover h-56 ring-2 ring-offset-2 ring-purple-800 rotate-3 relative top-64 left-10 hover:scale-110 hover:shadow-lg transition-all duration-300">
+
+                    <img src="https://img.freepik.com/premium-photo/collage-travel-destinations-experiences-around-world_9975-109420.jpg"
+                    alt="Places around the world"
+                    class="w-4/5 rounded-xl object-cover ring-2 ring-offset-2 ring-slate-800 -rotate-3 relative top-72 right-10 hover:scale-110 hover:shadow-lg transition-all duration-300">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="flex flex-row flex-wrap items-center justify-center w-full max-w-screen-xl m-auto py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+        <p class="block text-slate-800 font-semibold text-sm">
+            <img th:src="@{/images/logo-text-smc-dark.svg}" class="" alt="logo">
+        </p>
+        <p class="text-sm text-center text-slate-500">
+            Copyright © 2024&nbsp;
+            <a href="" target="_blank" rel="noreferrer">Smartcity</a>.
+        </p>
+    </footer>
+</body>
+
+</html>
