@@ -24,7 +24,7 @@
                         <a href="#" class="flex items-center">Home</a>
                     </li>
                     <li class="flex items-center p-1 text-sm gap-x-2 text-slate-300">
-                        <a href="#" class="flex items-center">Facilities</a>
+                        <a th:href="@{/facilities}" class="flex items-center">Facilities</a>
                     </li>
                 </ul>
             </div>
@@ -194,7 +194,7 @@
                     </div>
 
                     <div class="col-span-4 relative h-full rounded-xl overflow-hidden text-white">
-                        <a href="" class="">
+                        <a th:href="@{/login}" class="">
                             <img class="w-full h-full object-cover"
                                 th:src="@{images/smart-city-bg.jpg}" alt="bg" />
                             <div

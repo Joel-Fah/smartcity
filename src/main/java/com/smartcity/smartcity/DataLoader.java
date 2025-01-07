@@ -81,7 +81,7 @@ public class DataLoader implements CommandLineRunner {
             hospital.setAddress("Baltimore, Maryland");
             hospital.setTags("Hospital, Healthcare");
             hospital.setRating(4.5);
-            healthcare.setImageUrl("https://www.hopkinsmedicine.org/-/media/images/locations/ignore/jhh-bridge.jpeg");
+            hospital.setImageUrl("https://www.hopkinsmedicine.org/-/media/images/locations/ignore/jhh-bridge.jpeg");
             facilityRepository.save(hospital);
 
             Facility clinic = new Facility();

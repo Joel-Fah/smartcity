@@ -50,7 +50,7 @@ public class FacilityController {
     @PostMapping("/new")
     public String saveFacility(@ModelAttribute Facility facility) {
         facilityService.createFacility(facility);
-        return "redirect:/";
+        return "redirect:/facilities";
     }
 
     @GetMapping("/{id}/edit")

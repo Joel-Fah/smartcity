@@ -34,6 +34,8 @@ public class FacilityServiceImpl implements FacilityService {
         existingFacility.setAdditionalInfo(facility.getAdditionalInfo());
         existingFacility.setIsActive(facility.getIsActive());
         existingFacility.setImageUrl(facility.getImageUrl());
+        existingFacility.setCreatedAt(facility.getCreatedAt());
+        existingFacility.setUpdatedAt(facility.getUpdatedAt());
         return facilityRepository.save(existingFacility);
     }
 
