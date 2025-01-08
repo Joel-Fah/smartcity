@@ -45,6 +45,9 @@ public class Facility {
 
     private String imageUrl;
 
+    @Column(length = 2000)
+    private String mapLocationUrl;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -149,6 +152,14 @@ public class Facility {
         return imageUrl;
     }
 
+    public String getMapLocationUrl() {
+        return mapLocationUrl;
+    }
+
+    public void setMapLocationUrl(String mapLocationUrl) {
+        this.mapLocationUrl = mapLocationUrl;
+    }
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -170,6 +181,7 @@ public class Facility {
     }
 
     // Overrides
+
     @Override
     public String toString() {
         return "Facility{" +
@@ -185,6 +197,7 @@ public class Facility {
                 ", isActive=" + isActive +
                 ", contacts=" + contacts +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", mapLocationUrl='" + mapLocationUrl + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
