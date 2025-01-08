@@ -62,6 +62,7 @@ public class DataLoader implements CommandLineRunner {
             university.setTags("University, Technology, Education");
             university.setRating(3.5);
             university.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/a/a5/ICT-University-campus-yaounde.jpg");
+            university.setMapLocationUrl("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.3273692694943!2d11.514089773637231!3d3.9527747476900403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc87b87815f9b%3A0x42cdb742c77af0f9!2sICT%20University!5e0!3m2!1sen!2scm!4v1736351649745!5m2!1sen!2scm");
             facilityRepository.save(university);
 
             Facility school = new Facility();
@@ -72,6 +73,7 @@ public class DataLoader implements CommandLineRunner {
             school.setTags("High School, Education");
             school.setRating(4.0);
             school.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/1/17/Greenfield_High_School_%28Wisconsin%29_exterior.jpg");
+            school.setMapLocationUrl("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2920.0585764863554!2d-87.99039482499327!3d42.95596999724767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880511b145f7ace5%3A0xefb12d5541f38045!2sGreenfield%20High%20School!5e0!3m2!1sen!2scm!4v1736351779097!5m2!1sen!2scm");
             facilityRepository.save(school);
 
             Facility hospital = new Facility();
@@ -82,6 +84,7 @@ public class DataLoader implements CommandLineRunner {
             hospital.setTags("Hospital, Healthcare");
             hospital.setRating(4.5);
             hospital.setImageUrl("https://www.hopkinsmedicine.org/-/media/images/locations/ignore/jhh-bridge.jpeg");
+            hospital.setMapLocationUrl("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.6592421598193!2d-76.59640802516884!3d39.295977760431136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c80462dd7f9b41%3A0xeceddd36a48a8c8f!2sThe%20Johns%20Hopkins%20Hospital!5e0!3m2!1sen!2scm!4v1736351857973!5m2!1sen!2scm");
             facilityRepository.save(hospital);
 
             Facility clinic = new Facility();
@@ -92,6 +95,7 @@ public class DataLoader implements CommandLineRunner {
             clinic.setTags("Clinic, Healthcare");
             clinic.setRating(3.0);
             clinic.setImageUrl("https://cdcssl.ibsrv.net/ibimg/smb/1500x844_80/webmgr/1m/u/r/11-15-22/Reception_20221115_2152.jpg.webp?de7744755b57cfd1450f021942388923");
+            clinic.setMapLocationUrl("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.8499154618003!2d28.742793174314695!3d-25.808525047974257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeab3e700bf87d5%3A0x69aeb44a66351d79!2sSunshine%20Clinic!5e0!3m2!1sen!2scm!4v1736351925916!5m2!1sen!2scm");
             facilityRepository.save(clinic);
 
             // Create and save contacts for the facilities

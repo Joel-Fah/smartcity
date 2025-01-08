@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title th:text="'Smartcity Facilities - ' + ${facility.name}">Smartcity Facilities</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
 
     <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
@@ -20,7 +21,7 @@
             <div class="hidden lg:block">
                 <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
                     <li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
-                        <a th:href= "@{/}" class="flex items-center">Home</a>
+                        <a th:href="@{/}" class="flex items-center">Home</a>
                     </li>
                     <li class="flex items-center p-1 text-sm gap-x-2 font-semibold text-blue-600">
                         <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
@@ -82,53 +83,94 @@
     <main>
         <section id="hero" class="relative p-2 max-w-screen-xl m-auto">
             <div class="relative flex items-center justify-start w-full h-80 rounded-md bg-slate-300 overflow-hidden">
-                <img th:src="${facility.imageUrl}" class="select-none pointer-events-none absolute blur-sm z-0 brightness-50 object-cover w-full" alt="">
+                <img th:src="${facility.imageUrl}"
+                    class="select-none pointer-events-none absolute blur-sm z-0 brightness-50 object-cover w-full"
+                    alt="">
 
                 <div class="z-10 px-10 text-white space-y-2">
                     <small class="text-sm text-slate-200">Bring out the best out of</small>
-                    <h1 th:text="${facility.name}" class="text-7xl font-bold font-title max-w-xl"> Smart<span class="text-blue-600">city</span>.</h1>
+                    <h1 th:text="${facility.name}" class="text-7xl font-bold font-title max-w-xl"> Smart<span
+                            class="text-blue-600">city</span>.</h1>
                     <div class="flex gap-2.5 items-center text-slate-300">
                         <div
-                                    class="flex items-center justify-center gap-1 text-sm text-slate-950  px-2 py-1 rounded-full bg-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24"
-                                        width="24" height="24" fill="none">
-                                        <path
-                                            d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z"
-                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <span th:text="${facility.rating}" class=""></span>
-                                </div>
+                            class="flex items-center justify-center gap-1 text-sm text-slate-950  px-2 py-1 rounded-full bg-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" width="24"
+                                height="24" fill="none">
+                                <path
+                                    d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span th:text="${facility.rating}" class=""></span>
+                        </div>
                         <div class="w-1 h-1 bg-slate-100 rounded-full"></div>
                         <p th:text="${facility.category.name}" class="font-semibold text-"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="absolute right-16 -bottom-16 rotate-6 h-80 w-1/3 p-4 bg-slate-100 shadow-xl transition-all duration-300 hover:right-20 hover:rotate-3 hover:scale-110">
-                <img th:src="${facility.imageUrl}" alt=""
-                class="z-10 aspect-video w-full object-cover">
+            <div
+                class="stamp-border absolute right-16 -bottom-16 rotate-6 h-80 w-1/3 p-4 bg-slate-100 drop-shadow-xl transition-all duration-300 hover:right-20 hover:rotate-3 hover:scale-110">
+                <img th:src="${facility.imageUrl}" alt="" class="z-10 aspect-video w-full object-cover">
             </div>
 
             <div class="flex items-center gap-2 mt-4">
-                <a th:href= "@{/facilities/} + ${facility.id} + '/edit'" class="flex gap-2 items-center justify-center bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 px-4 py-2 rounded-xl transition-colors duration-300">
+                <a th:href="@{/facilities/} + ${facility.id} + '/edit'"
+                    class="flex gap-2 items-center justify-center bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 px-4 py-2 rounded-xl transition-colors duration-300 focus:ring-1 focus:ring-blue-600">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
-                        <path d="M3 17H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 21H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 8C3 5.64298 3 4.46447 3.73223 3.73223C4.46447 3 5.64298 3 8 3H16C18.357 3 19.5355 3 20.2678 3.73223C21 4.46447 21 5.64298 21 8C21 10.357 21 11.5355 20.2678 12.2678C19.5355 13 18.357 13 16 13H8C5.64298 13 4.46447 13 3.73223 12.2678C3 11.5355 3 10.357 3 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 17H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M3 21H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M3 8C3 5.64298 3 4.46447 3.73223 3.73223C4.46447 3 5.64298 3 8 3H16C18.357 3 19.5355 3 20.2678 3.73223C21 4.46447 21 5.64298 21 8C21 10.357 21 11.5355 20.2678 12.2678C19.5355 13 18.357 13 16 13H8C5.64298 13 4.46447 13 3.73223 12.2678C3 11.5355 3 10.357 3 8Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     Edit info.
                 </a>
 
-                <a href="" class="flex gap-2 items-center justify-center bg-transparent hover:bg-red-600/20 text-red-600 px-4 py-2 rounded-xl transition-colors duration-300">
+                <button data-dialog-target="animated-dialog"
+                    class="flex gap-2 items-center justify-center bg-transparent hover:bg-red-600/20 text-red-600 px-4 py-2 rounded-xl transition-colors duration-300 focus:ring-1 focus:ring-red-600">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
-                        <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path
+                            d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                         <path d="M9 11.7349H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                         <path d="M10.5 15.6543H13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        <path d="M3 5.5H21M16.0555 5.5L15.3729 4.09173C14.9194 3.15626 14.6926 2.68852 14.3015 2.39681C14.2148 2.3321 14.1229 2.27454 14.0268 2.2247C13.5937 2 13.0739 2 12.0343 2C10.9686 2 10.4358 2 9.99549 2.23412C9.89791 2.28601 9.80479 2.3459 9.7171 2.41317C9.32145 2.7167 9.10044 3.20155 8.65842 4.17126L8.05273 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path
+                            d="M3 5.5H21M16.0555 5.5L15.3729 4.09173C14.9194 3.15626 14.6926 2.68852 14.3015 2.39681C14.2148 2.3321 14.1229 2.27454 14.0268 2.2247C13.5937 2 13.0739 2 12.0343 2C10.9686 2 10.4358 2 9.99549 2.23412C9.89791 2.28601 9.80479 2.3459 9.7171 2.41317C9.32145 2.7167 9.10044 3.20155 8.65842 4.17126L8.05273 5.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                     Delete facility.
-                </a>
+                </button>
+
+                <div data-dialog-backdrop="animated-dialog" data-dialog-backdrop-close="true"
+                    class="pointer-events-none fixed inset-0 z-[99999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+                    <div data-dialog="animated-dialog" data-dialog-mount="opacity-100 translate-y-0 scale-100"
+                        data-dialog-unmount="opacity-0 -translate-y-28 scale-90 pointer-events-none"
+                        data-dialog-transition="transition-all duration-300"
+                        class="relative m-4 p-4 w-2/5 min-w-[40%] max-w-[40%] rounded-2xl bg-white shadow-sm">
+                        <div class="shrink-0 items-center pb-4 text-xl font-medium text-slate-800">
+                            <p class="text-base">You're about to delete</p>
+                            <span th:text="${facility.name}" class="block text- font-semibold"></span>
+                        </div>
+                        <div class="py-4 leading-normal text-slate-600 font-light">
+                            Deleting this facility will remove it from the system. This action cannot be undone.
+                        </div>
+                        <div class="flex shrink-0 flex-wrap items-center pt-4 justify-end">
+                            <button data-dialog-close="true"
+                                class="rounded-xl border border-transparent py-2 px-4 text-center text-sm transition-all text-slate-600 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                type="button">
+                                Cancel
+                            </button>
+                            <a th:href="@{/facilities/{id}/delete(id=${facility.id})}" data-dialog-close="true"
+                                class="rounded-xl bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                type="button">
+                                Delete Anyway
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="w-1 h-1 bg-slate-500 rounded-full"></div>
 
@@ -138,25 +180,40 @@
 
         <section id="facilities" class="p-2 max-w-screen-xl m-auto mt-32">
             <div class="grid grid-cols-12 gap-4">
-                <div class="col-span-8">
-                    <h2 th:text="'About ' + ${facility.name}" class="text-3xl font-bold font-title text-slate-800">About</h2>
-                    <ul class="flex gap-2 mb-4">
-                        <li th:each="tag : ${#strings.arraySplit(facility.tags, ',')}" class="inline">
-                            <span th:text="${tag}" class="px-2.5 py-0.5 rounded-lg text-sm text-blue-600 bg-blue-600/20"></span>
-                        </li>
-                    </ul>
-                    <p th:text="${facility.description}" class="text-slate-500"></p>
-                </div>
-
-                <div class="col-span-4 bg-slate-200 rounded-md p-8 flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <h3 class="text-blue-600">Address</h3>
-                        <p th:text="${facility.address}" class="text-lg text-slate-800"></p>
+                <div class="col-span-8 space-y-8">
+                    <div class="flex flex-col gap-2">
+                        <div class="mb-2">
+                            <h2 th:text="'About ' + ${facility.name}" class="text-3xl font-bold font-title text-slate-800">About</h2>
+                            <ul class="flex gap-2">
+                                <li th:each="tag : ${#strings.arraySplit(facility.tags, ',')}" class="inline">
+                                    <span th:text="${tag}"
+                                        class="px-2.5 py-0.5 rounded-lg text-sm text-blue-600 bg-blue-600/20"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <p th:text="${facility.description}" class="text-slate-500"></p>
                     </div>
 
-                    <div th:if= "${not #strings.isEmpty(facility.openingHours)}" class="flex flex-col">
-                        <h3 class="text-blue-600">Opening hours</h3>
-                        <ul class="list-disc list-inside mb-4 ms-2">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-3xl font-bold font-title text-slate-800">Get there</h2>
+                        <iframe th:src="${facility.mapLocationUrl}" class="w-full h-80" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="col-span-4 h-fit bg-slate-50 rounded-md p-8 flex flex-col gap-4">
+                    <div class="flex flex-col">
+                        <h3 class="text-sm text-blue-600">Category</h3>
+                        <p th:text="${facility.category.name}" class="text-slate-800"></p>
+                    </div>
+
+                    <div th:if="${not #strings.isEmpty(facility.address)}" class="flex flex-col">
+                        <h3 class="text-sm text-blue-600">Address</h3>
+                        <p th:text="${facility.address}" class="text-slate-800"></p>
+                    </div>
+
+                    <div th:if="${not #strings.isEmpty(facility.openingHours)}" class="flex flex-col">
+                        <h3 class="text-sm text-blue-600">Opening hours</h3>
+                        <ul class="list-disc list-inside ms-2">
                             <li th:each="hour : ${#strings.arraySplit(facility.openingHours, ',')}">
                                 <span th:text="${hour}" class=""></span>
                             </li>
@@ -164,8 +221,8 @@
                     </div>
 
                     <div class="flex flex-col gap-0.5">
-                        <h3 class="text-blue-600">Last updated</h3>
-                        <p th:text="${#dates.format(facility.updatedAt, 'E. d MMM. yyyy')}" class="text-lg text-slate-800"></p>
+                        <h3 class="text-sm text-blue-600">Last updated</h3>
+                        <p th:text="${#dates.format(facility.updatedAt, 'E. d MMM. yyyy')}" class="text-slate-800"></p>
                     </div>
                 </div>
             </div>
@@ -183,6 +240,9 @@
             <a href="" target="_blank" rel="noreferrer">Smartcity</a>.
         </p>
     </footer>
+
+    <!-- from cdn -->
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
 </body>
 
 </html>
