@@ -11,6 +11,8 @@ public interface FacilityService {
 
     Facility getFacilityById(Long id);
 
+    List<Facility> getFacilitiesByCategory(Long categoryId);
+
     List<Facility> getAllFacilities();
 
     void deleteFacility(Long id);

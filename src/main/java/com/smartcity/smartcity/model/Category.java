@@ -19,6 +19,8 @@ public class Category {
     @NotNull
     private String name;
 
+    private String institutions;
+
     @Column(length = 500)
     private String description;
 
@@ -50,6 +52,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getInstitutions() {
+        return institutions;
+    }
+
+    public void setInstitutions(String institutions) {
+        this.institutions = institutions;
     }
 
     public String getDescription() {

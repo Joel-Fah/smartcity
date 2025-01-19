@@ -6,6 +6,7 @@ import com.smartcity.smartcity.service.FacilityService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FacilityServiceImpl implements FacilityService {
@@ -44,6 +45,13 @@ public class FacilityServiceImpl implements FacilityService {
     public Facility getFacilityById(Long id) {
         return facilityRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Facility not found with id: " + id));
+    }
+
+    @Override
+    public List<Facility> getFacilitiesByCategory(Long categoryId) {
+        return facilityRepository.findAll().stream()
+                .filter(facility -> facility.getCategory().getId().equals(categoryId))
+                .collect(Collectors.toList());
     }
 
     @Override
