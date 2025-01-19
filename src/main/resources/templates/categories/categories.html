@@ -102,22 +102,194 @@
 
         <!-- Categories -->
         <section id="categories" class="p-2 max-w-screen-xl m-auto mt-10">
-            <div class="mb-4">
+            <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-2xl font-title font-medium">Categories</h3>
+                <button data-dialog-target="animated-dialog-new"
+                class="flex items-center gap-1 text-blue-600 text-sm border-b px-2 pb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                        <path d="M14.6171 4.76655C15.6275 3.16588 16.1327 2.36554 16.7947 2.12444C17.2503 1.95852 17.7497 1.95852 18.2053 2.12444C18.8673 2.36554 19.3725 3.16588 20.3829 4.76655C21.5202 6.56824 22.0889 7.46908 21.9887 8.21239C21.92 8.72222 21.6634 9.18799 21.2693 9.51835C20.6947 10 19.6298 10 17.5 10C15.3702 10 14.3053 10 13.7307 9.51835C13.3366 9.18799 13.08 8.72222 13.0113 8.21239C12.9111 7.46908 13.4798 6.56824 14.6171 4.76655Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        <path d="M2 6C2 4.33345 2 3.50018 2.42441 2.91603C2.56147 2.72738 2.72738 2.56147 2.91603 2.42441C3.50018 2 4.33345 2 6 2C7.66655 2 8.49982 2 9.08397 2.42441C9.27262 2.56147 9.43853 2.72738 9.57559 2.91603C10 3.50018 10 4.33345 10 6C10 7.66655 10 8.49982 9.57559 9.08397C9.43853 9.27262 9.27262 9.43853 9.08397 9.57559C8.49982 10 7.66655 10 6 10C4.33345 10 3.50018 10 2.91603 9.57559C2.72738 9.43853 2.56147 9.27262 2.42441 9.08397C2 8.49982 2 7.66655 2 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        <circle cx="17.5" cy="18" r="4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        <path d="M9.49994 14.5L2.5 21.5M2.50006 14.5L9.5 21.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Add a category
+                </button>
+
+                <div data-dialog-backdrop="animated-dialog-new" data-dialog-backdrop-close="true"
+                        class="pointer-events-none fixed inset-0 z-[99999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+                        <div data-dialog="animated-dialog-new" data-dialog-mount="opacity-100 translate-y-0 scale-100"
+                            data-dialog-unmount="opacity-0 -translate-y-28 scale-90 pointer-events-none"
+                            data-dialog-transition="transition-all duration-300"
+                            class="relative m-4 w-2/5 min-w-[40%] max-w-[40%] max-h-[90%] rounded-2xl bg-white shadow-sm overflow-auto">
+                            <div style="background: linear-gradient(to bottom, rgb(255, 255, 255, 0), rgb(255, 255, 255, 1)), url('https://as1.ftcdn.net/v2/jpg/05/72/16/78/1000_F_572167835_clourygTzhfrODnmvm43zpJ2zZNoKSv3.jpg') center/cover no-repeat;" 
+                            class="relative flex flex-col items-start justify-end p-4 h-44 shrink-0 pb-4 text-xl font-medium text-slate-800">
+                                <h2 class="block text-5xl font-bold text-slate-900">
+                                    New Category
+                                </h2>
+                                <button data-dialog-close="true" title="close"
+                                class="absolute top-2 right-2 bg-slate-700/80 text-slate-200 p-2 rounded-full hover:bg-slate-700/90 border border-transparent focus:border focus:border-gray-900 transition-colors duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                                        <path d="M19.0005 4.99988L5.00049 18.9999M5.00049 4.99988L19.0005 18.9999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="py-4 p-4 leading-normal text-slate-700 font-light">
+                                <p class="text-sm mb-2 text-slate-400">
+                                    Fill in the form below to add a new facility. Fields with <span
+                                        class="text-red-500 font-bold text-base">*</span> are required.
+                                </p>
+                                <!-- New category form -->
+                                <form th:action="@{/categories}" th:object="${category}" method="post" class="flex flex-col gap-2.5">
+                                    <div class="relative w-full min-w-[200px]">
+                                        <label for="name" class="block mb-1 ps-3 text-sm text-slate-600">
+                                            Name <span class="text-red-500 font-bold">*</span>
+                                        </label>
+                                        <input
+                                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                                            type="text" name="name" id="name" placeholder="Education" required
+                                            th:field="*{name}" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                            <path
+                                                d="M15.6 8.40033V12.9003C15.6 14.3915 16.8088 15.6003 18.3 15.6003C19.7912 15.6003 21 14.3915 21 12.9003V12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C14.0265 21 15.8965 20.3302 17.4009 19.2M15.6 12.0003C15.6 13.9886 13.9882 15.6003 12 15.6003C10.0118 15.6003 8.4 13.9886 8.4 12.0003C8.4 10.0121 10.0118 8.40033 12 8.40033C13.9882 8.40033 15.6 10.0121 15.6 12.0003Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                    </div>
+                
+                                    <div class="relative w-full min-w-[200px]">
+                                        <label for="institutions" class="block mb-1 ps-3 text-sm text-slate-600">
+                                            Institutions <span class="text-red-500 font-bold">*</span>
+                                        </label>
+                                        <input
+                                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                                            type="text" name="tags" id="tags" placeholder="university, college, school" required
+                                            th:field="*{institutions}" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                            <path
+                                                d="M18.058 8.53645L17.058 7.92286C16.0553 7.30762 15.554 7 15 7C14.446 7 13.9447 7.30762 12.942 7.92286L11.942 8.53645C10.9935 9.11848 10.5192 9.40949 10.2596 9.87838C10 10.3473 10 10.9129 10 12.0442V17.9094C10 19.8377 10 20.8019 10.5858 21.4009C11.1716 22 12.1144 22 14 22H16C17.8856 22 18.8284 22 19.4142 21.4009C20 20.8019 20 19.8377 20 17.9094V12.0442C20 10.9129 20 10.3473 19.7404 9.87838C19.4808 9.40949 19.0065 9.11848 18.058 8.53645Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M14 7.10809C13.3612 6.4951 12.9791 6.17285 12.4974 6.05178C11.9374 5.91102 11.3491 6.06888 10.1725 6.3846L8.99908 6.69947C7.88602 6.99814 7.32949 7.14748 6.94287 7.5163C6.55624 7.88513 6.40642 8.40961 6.10679 9.45857L4.55327 14.8971C4.0425 16.6852 3.78712 17.5792 4.22063 18.2836C4.59336 18.8892 6.0835 19.6339 7.5 20"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M14.4947 10C15.336 9.44058 16.0828 8.54291 16.5468 7.42653C17.5048 5.12162 16.8944 2.75724 15.1836 2.14554C13.4727 1.53383 11.3091 2.90644 10.3512 5.21135C10.191 5.59667 10.0747 5.98366 10 6.36383"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        </svg>
+                                        <small class="ps-3 mt-1 text-xs block text-slate-400">Add 2 to 3 institutions concerned, comma-separated</small>
+                                    </div>
+                
+                                    <div class="relative w-full min-w-[200px]">
+                                        <label for="imageUrl" class="block mb-1 ps-3 text-sm text-slate-600">
+                                            Image URL <span class="text-red-500 font-bold">*</span>
+                                        </label>
+                                        <input
+                                            class="w-full bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                                            type="url" name="imageUrl" id="imageUrl" placeholder="https://..." required
+                                            th:field="*{imageUrl}" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                                <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
+                                                <circle cx="16.5" cy="7.5" r="1.5" stroke="currentColor" stroke-width="1.5" />
+                                                <path d="M16 22C15.3805 19.7749 13.9345 17.7821 11.8765 16.3342C9.65761 14.7729 6.87163 13.9466 4.01569 14.0027C3.67658 14.0019 3.33776 14.0127 3 14.0351" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                                <path d="M13 18C14.7015 16.6733 16.5345 15.9928 18.3862 16.0001C19.4362 15.999 20.4812 16.2216 21.5 16.6617" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                                            </svg>
+                                    </div>
+                
+                                    <div class="relative w-full min-w-[200px]">
+                                        <label for="description" class="block mb-1 ps-3 text-sm text-slate-600">
+                                            Description <span class="text-red-500 font-bold">*</span>
+                                        </label>
+                                        <textarea
+                                            class="w-full h-auto max-h-52 bg-slate-50/10 placeholder:text-slate-400 pe-10 text-sm border border-slate-200 rounded-xl px-3 py-2.5 transition duration-300 ease focus:outline-none focus:border-blue-600 hover:border-slate-300 shadow-sm focus:shadow"
+                                            name="description" id="description"
+                                            placeholder="Something about this category..." rows="8" required
+                                            th:field="*{description}"></textarea>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                                            class="absolute w-6 h-6 top-8 right-2.5 text-slate-500">
+                                            <path
+                                                d="M5.07579 17C4.08939 4.54502 12.9123 1.0121 19.9734 2.22417C20.2585 6.35185 18.2389 7.89748 14.3926 8.61125C15.1353 9.38731 16.4477 10.3639 16.3061 11.5847C16.2054 12.4534 15.6154 12.8797 14.4355 13.7322C11.8497 15.6004 8.85421 16.7785 5.07579 17Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M4 22C4 15.5 7.84848 12.1818 10.5 10" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <small class="ps-3 mt-1 text-xs block text-slate-400">What's the category all about...</small>
+                                    </div>
+
+                                    <div class="flex shrink-0 flex-wrap items-center justify-end pt-4">
+                                        <button data-dialog-close="true"
+                                            class="rounded-xl bg-blue-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-none hover:shadow-lg focus:bg-blue-700 focus:text-white focus:shadow-none active:bg-blue-700 hover:bg-blue-800 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                            type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
             <div class="flex flex-wrap gap-2 overflow-x-auto">
-                <div th:each="category:${categories}" class="">
-                    <div class="relative h-44 rounded-xl overflow-hidden text-white">
-                        <a href="">
-                            <img class="transition-transform w-full h-full object-cover duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
-                                th:src="${category.imageUrl}" alt="investment-seed-round" />
-                            <div
-                                class="flex flex-col items-start justify-end absolute top-0 right-0 left-0 bottom-0 rounded-xl font-bold text-4xl text-slate-50 p-4 bg-gradient-to-b from-slate-300/10 to-slate-950">
-                                <span th:text="${category.name}" class=""></span>
-                                <span th:text="${category.description}" class="text-sm text-slate-400"></span>
+                <div th:each="category : ${categories}" class="">
+                    <button th:attr="data-dialog-target='animated-dialog-' + ${category.id}" class="relative h-44 rounded-xl overflow-hidden text-white">
+                        <img class="bg-slate-200 transition-transform w-full h-full object-cover duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)] transform group-hover:scale-110"
+                            th:src="${category.imageUrl}" alt="investment-seed-round" />
+                        <div
+                            class="flex flex-col items-start justify-end absolute top-0 right-0 left-0 bottom-0 rounded-xl font-bold text-4xl text-slate-50 p-4 bg-gradient-to-b from-slate-300/10 to-slate-950">
+                            <span th:text="${category.name}" class=""></span>
+                            <span th:text="${category.description}" class="text-sm text-slate-400 font-normal line-clamp-1 text-left"></span>
+                        </div>
+                    </button>
+            
+                    <div th:attr="data-dialog-backdrop='animated-dialog-' + ${category.id}" data-dialog-backdrop-close="true"
+                        class="pointer-events-none fixed inset-0 z-[99999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+                        <div th:attr="data-dialog='animated-dialog-' + ${category.id}" data-dialog-mount="opacity-100 translate-y-0 scale-100"
+                            data-dialog-unmount="opacity-0 -translate-y-28 scale-90 pointer-events-none"
+                            data-dialog-transition="transition-all duration-300"
+                            class="relative m-4 w-2/5 min-w-[40%] max-w-[40%] rounded-2xl bg-white shadow-sm overflow-clip">
+                            <div th:attr="style='background: linear-gradient(to bottom, rgb(255, 255, 255, 0), rgb(255, 255, 255, 1)), url(' + ${category.imageUrl} + ') center/cover no-repeat;'" 
+                            class="relative flex flex-col items-start justify-end p-4 h-44 shrink-0 pb-4 text-xl font-medium text-slate-800">
+                                <h2 th:text="${category.name}" class="block text-5xl font-bold text-slate-900"></h2>
+                                <button data-dialog-close="true" title="close"
+                                class="absolute top-2 right-2 bg-slate-700/80 text-slate-200 p-2 rounded-full hover:bg-slate-700/90 border border-transparent focus:border focus:border-gray-900 transition-colors duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                                        <path d="M19.0005 4.99988L5.00049 18.9999M5.00049 4.99988L19.0005 18.9999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
                             </div>
-                        </a>
+                            <div class="py-4 p-4 leading-normal text-slate-700 font-light">
+                                <ul class="flex gap-2 mb-2">
+                                    <li th:each="institution : ${#strings.arraySplit(category.institutions, ',')}" class="inline">
+                                        <span th:text="${institution}" class="px-2.5 py-0.5 rounded-md text-xs text-slate-700 bg-slate-200"></span>
+                                    </li>
+                                </ul>
+                                <p th:text="${category.description}"></p>
+                            </div>
+                            <div class="flex items-center justify-between p-4 pt-4">
+                                <small th:text="${#dates.format(category.createdAt, 'E. d MMM. yyyy')}" class="text-sm text-slate-400"></small>
+
+                                <div class="flex shrink-0 flex-wrap items-center justify-end">
+                                    <a th:href="@{/categories/{id}/delete(id=${category.id})}" data-dialog-close="true"
+                                        class="rounded-xl bg-transparent py-2 px-4 border border-transparent text-center text-sm text-red-700 transition-all shadow-none hover:shadow-lg focus:bg-red-700 focus:text-white focus:shadow-none active:bg-red-700 hover:bg-red-700/20 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                        type="button">
+                                        Delete
+                                    </a>
+                                    <a th:href="@{/categories/{id}/edit(id=${category.id})}" data-dialog-close="true"
+                                        class="rounded-xl bg-blue-700/20 py-2 px-4 border border-transparent text-center text-sm text-blue-700 transition-all shadow-none hover:shadow-lg focus:bg-blue-700 focus:text-white focus:shadow-none active:bg-blue-700 hover:bg-blue-700/30 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                        type="button">
+                                        Edit info
+                                    </a>
+                                    <a th:href="@{/categories/{categoryId}/{categoryName}/facilities(categoryId=${category.id}, categoryName=${category.name})}" data-dialog-close="true"
+                                        class="rounded-xl bg-blue-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-none hover:shadow-lg focus:bg-blue-700 focus:text-white focus:shadow-none active:bg-blue-700 hover:bg-blue-800 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                        type="button">
+                                        View facilities
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -136,6 +308,10 @@
             <a href="" target="_blank" rel="noreferrer">Smartcity</a>.
         </p>
     </footer>
+
+    <!-- from cdn -->
+    <!-- <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script> -->
+    <script th:src="@{/js/material_tailwind/dialog.js}"></script>
 </body>
 
 </html>
