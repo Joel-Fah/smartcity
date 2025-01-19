@@ -1,11 +1,175 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" class="scroll-smooth" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Admin Dashboard</title>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartcity Admin Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+
+    <!-- Google Font for the welcome message -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #1E40AF; /* Blue background */
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav ul li a.selected {
+            color: #2563eb;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content */
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background-image: url('https://via.placeholder.com/600x400?text=Welcome+Image'); /* Placeholder image */
+            background-size: cover; /* Make the background image cover the area */
+            background-position: center; /* Center the background image */
+            height: 60vh;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: white; /* White color for the text */
+            font-size: 3rem; /* Larger font size */
+            font-weight: 600; /* Bold text */
+            letter-spacing: 2px; /* Add space between letters */
+            text-align: center; /* Center align text */
+            padding: 20px 0;
+            font-family: 'Poppins', sans-serif; /* Poppins font */
+            animation: fadeIn 1s ease-out; /* Add a fade-in animation */
+        }
+
+        /* Keyframes for fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px); /* Start from bottom */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* End in original position */
+            }
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .options a:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .options a img {
+            margin-right: 10px;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        footer {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-<body class="bg-blue-300">
-    <h1>Welcome, Admin!</h1>
-    <a href="/logout">Logout</a>
+
+<body>
+<!-- Header -->
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a href="#">Facilities</a></li>
+        <li><a th:href="@{/admin}" class="selected">Admin</a></li>
+        <li><a th:href="@{/admin/manage-users}">Manage Users</a></li>
+        <li><a th:href="@{/admin/view-reports}">View Reports</a></li>
+        <li><a th:href="@{/admin/settings}">Settings</a></li>
+        <li><a th:href="@{/admin/help}">Help & Support</a></li>
+    </ul>
+</nav>
+
+<!-- Body -->
+<main>
+    <h1>Welcome Back, Admin!</h1>
+    <div class="options">
+        <a th:href="@{/admin/manage-users}">
+            <img th:src="@{/images/manage-users-icon.png}" alt="Manage Users Icon"> Manage Users
+        </a>
+        <a th:href="@{/admin/view-reports}">
+            <img th:src="@{/images/view-reports-icon.png}" alt="View Reports Icon"> View Reports
+        </a>
+        <a th:href="@{/admin/settings}">
+            <img th:src="@{/images/settings-icon.png}" alt="Settings Icon"> Settings
+        </a>
+        <a th:href="@{/admin/help}">
+            <img th:src="@{/images/help-icon.png}" alt="Help & Support Icon"> Help & Support
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>
+        <img th:src="@{/images/logo-text-smc-dark.svg}" alt="Smartcity Logo">
+    </p>
+    <p>Copyright © 2024 <a href="" target="_blank" rel="noreferrer">Smartcity</a>.</p>
+</footer>
 </body>
+
 </html>

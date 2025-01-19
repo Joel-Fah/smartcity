@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "watch:postcss": "cross-env NODE_ENV=development postcss src/main/resources/static/css/styles.tailwind.css -o target/classes/static/css/styles.build.tailwind.css --watch",
-    "browsersync": "browser-sync start --proxy localhost:8080 --port 3000 --files 'src/main/resources/templates/**/*.html, target/classes/static/css/*.css'"
+    "browsersync": "browser-sync start --proxy localhost:8081 --port 3000 --files 'src/main/resources/templates/**/*.html, target/classes/static/css/*.css'"
   },
   "keywords": [],
   "author": "",

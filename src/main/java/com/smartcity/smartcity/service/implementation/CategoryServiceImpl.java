@@ -25,6 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category existingCategory = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
         existingCategory.setName(category.getName());
+        existingCategory.setInstitutions(category.getInstitutions());
         existingCategory.setDescription(category.getDescription());
         existingCategory.setImageUrl(category.getImageUrl());
         existingCategory.setCreatedAt(category.getCreatedAt());
