@@ -8,7 +8,7 @@
       linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r))
         calc(100% - 3 * var(--r));
   }
-  
+
   /* .stamp-border::before {
     content: '';
     position: absolute;

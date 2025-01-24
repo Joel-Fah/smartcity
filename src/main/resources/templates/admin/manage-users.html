@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+</head>
+<body>
+<h1>Manage Users</h1>
+<ul>
+    <!-- Assume 'users' is passed from the controller -->
+    <th:block th:each="user : ${users}">
+        <li th:text="${user.name}">User Name</li>
+    </th:block>
+</ul>
+</body>
+</html>
