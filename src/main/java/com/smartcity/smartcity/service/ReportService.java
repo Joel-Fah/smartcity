@@ -1,7 +1,8 @@
 package com.smartcity.smartcity.service;
 
-import org.springframework.stereotype.Service;
 import com.smartcity.smartcity.model.Report;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service

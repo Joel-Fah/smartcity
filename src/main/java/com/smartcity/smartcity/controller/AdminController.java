@@ -1,25 +1,23 @@
 package com.smartcity.smartcity.controller;
+
+import org.springframework.stereotype.Controller;
 import com.smartcity.smartcity.service.ReportService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import com.smartcity.smartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.smartcity.smartcity.model.User; // Import the User class
-
 
 
 @Controller
 public class AdminController {
 
     @Autowired
-    private UserService userService;
+    private UserService userService; // Declare and inject userService
 
     @GetMapping("/admin/home")
     public String adminHome() {
         return "admin-home";
     }
-
     @GetMapping("/admin/manage-users")
     public String manageUsers(Model model) {
         // Logic to retrieve user data (if any)
@@ -45,10 +43,11 @@ public class AdminController {
         // You could provide help information or FAQs here.
         return "admin/help"; // View name (admin/help.html)
     }
-
     private final ReportService reportService;
+
+    // Constructor injection
     @Autowired
     public AdminController(ReportService reportService) {
-        this.reportService = reportService;  // Assign the injected ReportService to the field
+        this.reportService = reportService;
     }
 }

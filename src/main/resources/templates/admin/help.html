@@ -4,9 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help & Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 20px auto;
+            color: #fff;
+            max-width: 600px;
+            line-height: 1.6;
+            animation: slideIn 2s;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            max-width: 80%;
+        }
+
+        .image {
+            width: 30%; /* Adjust image size */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s;
+        }
+
+        .contact-button {
+            display: block;
+            margin: 40px auto;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-section {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-image: url('https://via.placeholder.com/1200x300.png?text=Help+%26+Support+Image'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+            margin-top: 40px;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 0.9rem;
+            animation: fadeIn 3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
 <h1>Help & Support</h1>
-<p>If you need assistance, please contact support.</p>
+<p>If you need assistance, please don't hesitate to contact our support team. We're here to help you with any issues or questions you may have.</p>
+
+<div class="container">
+<!--    <img src="https://via.placeholder.com/300x300.png?text=Customer+Service" class="image" alt="Customer Service">-->
+    <img th:src="@{/images/Contact1.webp}" class="image" alt="Contact 1">
+<!--    <img src="https://via.placeholder.com/300x300.png?text=Contact+1" class="image" alt="Contact 1">-->
+    <img th:src="@{/images/Contact2.png}" class="image" alt="Contact 2">
+<!--    <img src="https://via.placeholder.com/300x300.png?text=Contact+2" class="image" alt="Contact 2">-->
+    <img th:src="@{/images/customer-serive.png}" class="image" alt="Customer Service">
+</div>
+
+<a href="ictuniversiry@gmail.com" class="contact-button">Contact Support</a>
+
+<div class="image-section"></div>
+
+<footer>
+    &copy; 2024 Smartcity. All rights reserved.
+</footer>
 </body>
 </html>

@@ -9,23 +9,35 @@
     <link rel="stylesheet" th:href="@{/css/styles.build.tailwind.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/x-icon">
 
-    <!-- Google Font for the welcome message -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* General Styles */
         body {
-            background-color: #1E40AF; /* Blue background */
+            background: linear-gradient(135deg, #1E40AF, #2563EB, #1E3A8A);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
             height: 100vh;
             margin: 0;
             display: flex;
             flex-direction: column;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+
+        /* Gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         nav {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         nav ul {
@@ -40,72 +52,113 @@
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #2563EB;
         }
 
         nav ul li a.selected {
-            color: #2563eb;
+            color: #2563EB;
         }
 
         main {
             flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content */
+            align-items: center;
             justify-content: center;
             text-align: center;
             padding: 0 20px;
-            background-image: url('https://via.placeholder.com/600x400?text=Welcome+Image'); /* Placeholder image */
-            background-size: cover; /* Make the background image cover the area */
-            background-position: center; /* Center the background image */
-            height: 60vh;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            color: white; /* White color for the text */
-            font-size: 3rem; /* Larger font size */
-            font-weight: 600; /* Bold text */
-            letter-spacing: 2px; /* Add space between letters */
-            text-align: center; /* Center align text */
-            padding: 20px 0;
-            font-family: 'Poppins', sans-serif; /* Poppins font */
-            animation: fadeIn 1s ease-out; /* Add a fade-in animation */
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            animation: slideDown 1.5s ease;
         }
 
-        /* Keyframes for fade-in effect */
-        @keyframes fadeIn {
+        /* Slide-down effect */
+        @keyframes slideDown {
             0% {
                 opacity: 0;
-                transform: translateY(10px); /* Start from bottom */
+                transform: translateY(-20px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0); /* End in original position */
+                transform: translateY(0);
             }
+        }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image:url('adminback.webp'); /* Set the background image */
+            background-size: cover; /* Ensure the image covers the entire page */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Keep the image fixed while scrolling */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .options {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* Fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .options a {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            background-color: #ffffff;
+            padding: 15px 20px;
+            background-color: rgba(255, 255, 255, 0.9);
             color: #333;
             text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-weight: bold;
         }
 
         .options a:hover {
-            background-color: #2563eb;
-            color: #ffffff;
+            transform: translateY(-5px);
+            background-color: #2563EB;
+            color: white;
         }
 
         .options a img {
@@ -114,18 +167,37 @@
             height: 48px;
             object-fit: contain;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px auto;
+            max-width: 80%;
+        }
+
+        .image {
+            width: 100%; /* Adjust image size */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s;
+        }
 
         footer {
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px 20px;
             text-align: center;
+            color: #fff;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         footer p {
             margin: 5px 0;
-            color: #666;
             font-size: 0.9rem;
+        }
+
+        footer img {
+            width: 100px;
         }
     </style>
 </head>
@@ -161,6 +233,11 @@
             <img th:src="@{/images/help-icon.png}" alt="Help & Support Icon"> Help & Support
         </a>
     </div>
+    <div class="container">
+        <!--    <img src="https://via.placeholder.com/300x300.png?text=Customer+Service" class="image" alt="Customer Service">-->
+        <img th:src="@{/images/adminback.webp}" class="image" alt="Admin welcome">
+
+    </div>
 </main>
 
 <!-- Footer -->
@@ -171,5 +248,4 @@
     <p>Copyright © 2024 <a href="" target="_blank" rel="noreferrer">Smartcity</a>.</p>
 </footer>
 </body>
-
 </html>
